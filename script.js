@@ -3,6 +3,8 @@ var player1Name;
 var player2Name;
 var player1Gender;
 var player2Gender;
+var conditionPlayer1;
+var conditionPlayer2;
 
 function greetUsers() {
     let cookies = document.cookie.split(";");
@@ -107,14 +109,38 @@ function onFormSubmit(reload) {
     player1Gender = document.getElementById("player1Gender").value;
     player2Gender = document.getElementById("player2Gender").value;
 
-    var date = new Date();
-    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + date.toUTCString();
+    for (let counter = 0; counter < player1Name.length; counter++) {
+        if (((((player1Name[counter].charCodeAt(0) - 96) > 0) && (player1Name[counter].charCodeAt(0) - 96) )) || (player1Name[counter].charCodeAt(0) <= 57 && player1Name[counter].charCodeAt(0) >= 48)) {
+            conditionPlayer1 = true;
+        }
+        else {
+            conditionPlayer1 = false;
+            alert("Invalid name for Player 1.");
+            break;
+        }
+    }
+    
+    for (let counter = 0; counter < player2Name.length; counter++) {
+        if (((((player2Name[counter].toLowerCase().charCodeAt(0) - 96) > 0) && (player2Name[counter].toLowerCase().charCodeAt(0) - 96) <= 26)) || (player2Name[counter].charCodeAt(0) <= 57 && player2Name[counter].charCodeAt(0) >= 48)) {
+            conditionPlayer2 = true;
+        }
+        else {
+            conditionPlayer2 = false;
+            alert("Invalid name for Player 2.");
+            break;
+        }
+    }
 
-    document.cookie = "player1Name=" + player1Name + ";" + expires + ";path=/";
-    document.cookie = "player2Name=" + player2Name + ";" + expires + ";path=/";
-    document.cookie = "player1Gender=" + player1Gender + ";" + expires + ";path=/";
-    document.cookie = "player2Gender=" + player2Gender + ";" + expires + ";path=/";
+    if (conditionPlayer1 && conditionPlayer2) {
+        var date = new Date();
+        date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + date.toUTCString();
+
+        document.cookie = "player1Name=" + player1Name + ";" + expires + ";path=/";
+        document.cookie = "player2Name=" + player2Name + ";" + expires + ";path=/";
+        document.cookie = "player1Gender=" + player1Gender + ";" + expires + ";path=/";
+        document.cookie = "player2Gender=" + player2Gender + ";" + expires + ";path=/";
+    }
 
     reload.preventDefault();
 }
