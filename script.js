@@ -1,21 +1,13 @@
 var imgNumber = 1;
-var player1Name;
-var player2Name;
-var player1Gender;
-var player2Gender;
+var player1Name = localStorage.getItem("player1Name");
+var player2Name = localStorage.getItem("player2Name");
+var player1Gender = localStorage.getItem("player1Gender");
+var player2Gender = localStorage.getItem("player2Gender");
 var conditionPlayer1;
 var conditionPlayer2;
 
 function greetUsers() {
-    let cookies = document.cookie.split(";");
-    let cookieData = [cookies[0].trim().split("="), cookies[1].trim().split("="), cookies[2].trim().split("="), cookies[3].trim().split("=")];
-
-    player1Name = cookieData[0][1];
-    player2Name = cookieData[1][1];
-    player1Gender = cookieData[2][1];
-    player2Gender = cookieData[3][1];
-
-    if (document.cookie != null || document.cookie != undefined) {
+    if (player1Name != null || player1Name != undefined) {
         if (player1Gender == "male") {
             document.getElementById("player1ProfilePicture").src = "images/profilePictures/male.png";
         }
@@ -25,10 +17,10 @@ function greetUsers() {
         else {
             document.getElementById("player1ProfilePicture").src = "images/profilePictures/default.png";
         }
-        if (player1Gender == "male") {
-            document.getElementById("player2ProfilePicture").src = "images/profilePictures/female.png";
+        if (player2Gender == "male") {
+            document.getElementById("player2ProfilePicture").src = "images/profilePictures/male.png";
         }
-        else if (player1Gender == "female") {
+        else if (player2Gender == "female") {
             document.getElementById("player2ProfilePicture").src = "images/profilePictures/female.png";
         }
         else {
@@ -110,7 +102,7 @@ function onFormSubmit(reload) {
     player2Gender = document.getElementById("player2Gender").value;
 
     for (let counter = 0; counter < player1Name.length; counter++) {
-        if (((((player1Name[counter].charCodeAt(0) - 96) > 0) && (player1Name[counter].charCodeAt(0) - 96) )) || (player1Name[counter].charCodeAt(0) <= 57 && player1Name[counter].charCodeAt(0) >= 48)) {
+        if (((((player1Name[counter].toLowerCase().charCodeAt(0) - 96) > 0) && (player1Name[counter].toLowerCase().charCodeAt(0) - 96) )) || (player1Name[counter].toLowerCase().charCodeAt(0) <= 57 && player1Name[counter].toLowerCase().charCodeAt(0) >= 48)) {
             conditionPlayer1 = true;
         }
         else {
@@ -132,14 +124,10 @@ function onFormSubmit(reload) {
     }
 
     if (conditionPlayer1 && conditionPlayer2) {
-        var date = new Date();
-        date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + date.toUTCString();
-
-        document.cookie = "player1Name=" + player1Name + ";" + expires + ";path=/";
-        document.cookie = "player2Name=" + player2Name + ";" + expires + ";path=/";
-        document.cookie = "player1Gender=" + player1Gender + ";" + expires + ";path=/";
-        document.cookie = "player2Gender=" + player2Gender + ";" + expires + ";path=/";
+        localStorage.setItem("player1Name", player1Name);
+        localStorage.setItem("player2Name", player2Name);
+        localStorage.setItem("player1Gender", player1Gender);
+        localStorage.setItem("player2Gender", player2Gender);
     }
 
     reload.preventDefault();

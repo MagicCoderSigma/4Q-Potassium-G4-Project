@@ -121,6 +121,7 @@ nav:hover {
 
 #profileContainer>div {
     margin: 20px;
+    overflow: auto;
 }
 
 #profileContainer img {
@@ -429,11 +430,12 @@ nav:hover {
     transform: translatex(7dvw);
 }
 
-#overview hr {
+#overview #line {
     position: relative;
-    transform: translateY(-5dvh);
+    transform: translateY(-4dvh);
     z-index: -10;
     border-top: 5px ridge #ffde59;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 form {

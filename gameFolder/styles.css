@@ -1,0 +1,536 @@
+@font-face {
+    font-family: importedFont;
+    src: url("../sample.ttf");
+}
+
+* {
+    font-family: importedFont;
+}
+
+body {
+    background-color: #45b6fe;
+    background-size: 100px;
+    background-image: url("../images/background.png");
+    background-size: 400px;
+}
+
+#backgroundMusic {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+button {
+    transition: 0.2s;
+}
+
+button:hover {
+    scale: 1.1;
+}
+
+button:active {
+    scale: 1.2;
+}
+
+nav {
+    height: 20dvh;
+    width: 20dvh;
+    background-color: #ffde59;
+    border-radius: 25px;
+    border: 5px ridge #2d92cd;
+    display: flex;
+    scale: 0.7;
+    position: fixed;
+    z-index: 900;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+nav:hover {
+    scale: 0.8;
+    width: 80dvh;
+    overflow: visible;
+}
+
+#navLogo {
+    height: 19dvh;
+    transition: 0.2s;
+}
+
+#navLogo:hover {
+    scale: 1.1;
+}
+
+#navLogo:active {
+    scale: 1.2;
+}
+
+.navText {
+    margin: 10px;
+    height: 5dvh;
+    transform: translateY(7dvh);
+    transition: 0.2s;
+}
+
+.navText:hover {
+    scale: 1.1;
+}
+
+.navText:active {
+    scale: 1.2;
+}
+
+#highScoreContainer {
+    display: none;
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    scale: 0.7;
+    width: 100dvh;
+    margin-left: -2dvw;
+}
+
+#highScoreContainer>* {
+    margin-left: 1dvw;
+    margin-right: 1dvw;
+    align-content: center;
+}
+
+#profilePictureOfHighScorer {
+    height: 15dvh;
+    align-self: center;
+    border-radius: 50%;
+    border: 5px ridge #2d92cd;
+}
+
+#highScorerInfo {
+    display: block;
+    height: 20dvh;
+    font-size: 5dvh;
+    width: 22dvh;
+    color: #194b68;
+}
+
+#highScorerName, #highScore {
+    display: flex;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    margin: -1dvh;
+}
+
+.leftWing, .rightWing {
+    position: absolute;
+    scale: 0.5;
+}
+
+.leftWing {
+    transform: translate(-70dvh, -70dvh);
+}
+
+.rightWing {
+    transform: translate(50dvh, -70dvh);
+}
+
+section {
+    display: flex;
+    justify-content: center;
+} 
+
+.header div {
+    height: 12.5dvh;
+}
+
+.oneLiner img {
+    height: 17dvh;
+    justify-self: center;
+    transform: translateY(-0.5dvh);
+}
+
+.header img {
+    height: 15dvh;
+}
+
+.header div {
+    width: 25dvh;
+    margin: 0.25dvh;
+}
+
+div div {
+    display: flex;
+} 
+
+section div div div {
+    display: block;
+    height: 10dvh;
+    width: 22.5dvh;
+    margin-top: 0.25dvh;
+    margin-bottom: 0.25dvh;
+    margin-left: 1dvh;
+    margin-right: 2.275dvh;
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    color: #2d92cd;
+    font-size: 4dvh;
+    text-align: center;
+    align-content: center;
+    transition: 0.2s;
+}
+
+section div div div:hover {
+    scale: 1.1;
+}
+
+#blur {
+    backdrop-filter: blur(10px);
+    height: 100dvh;
+    width: 100dvw;
+    z-index: 990;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+
+#container {
+    display: none;
+    text-align: center;
+    font-size: 30dvh;
+    transform: translateY(15dvh) translateX(25dvw);
+    transition: 0.2s;
+    z-index: 1500;
+    position: absolute;
+    width: 30dvw;
+}
+
+#container1 {
+    position: fixed;
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    color: #194b68;
+    border-radius: 25px;
+    height: 80dvh;
+    width: 80dvw;
+    justify-self: center;
+    z-index: 1000;
+    transform: translateY(9dvh) translateX(7.5dvw);
+    justify-content: center;
+    text-align: center;
+    background-image: url(../images/footerBackground.png);
+    display: none;
+    transition: 0.2s;
+    overflow: hidden;
+}
+
+#container1 #category {
+    height: 50dvh;
+    position: absolute;
+    transform: translate(25dvh, -10dvh);
+    display: none;
+}
+
+#container1 #question {
+    font-size: 10dvh;
+    display: block;
+    text-align: center;
+    transform: translate(3.5dvw, 20dvh);
+    overflow: visible;
+    display: none;
+    height: 25dvh;
+    width: 90%;
+    line-height: 8dvh;
+    background-color: white;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    overflow: scroll;
+}
+
+#answerContainer {  
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    width: 50%;
+    height: 30%;
+    transform: translate(47.5dvh, 25dvh);
+    scale: 0.7;
+    display: none;
+}
+
+#answerContainer input {
+    height: 10dvh;
+    width: 25dvw;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    font-size: 7.5dvh;
+    color: #194b68;
+}
+
+#answerContainer label {
+    font-size: 7.5dvh;
+}
+
+#answerContainer button {
+    height: 10dvh;
+    width: 10dvw;
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    transform: translateY(-1dvh);
+    color: #194b68;
+    font-size: 4dvh;
+    transition: 0.2s;
+}
+
+#answerContainer button:hover {
+    scale: 1.1;
+}
+
+#answerContainer button:active {
+    scale: 1.2;
+}
+
+#countdownBackground {
+    display: none;
+    height: 50dvh;
+    transform: translateY(5.5dvh) translateX(20.75dvw);
+    z-index: 900;
+}
+
+#countdownImage {
+    height: 20.5dvh;
+    border-end-end-radius: 20px;
+    border-bottom-left-radius: 20px;
+    transform: translateY(3dvh);
+    display: none;
+}
+
+#goImage {
+    height: 41.25dvh;
+    transform: translateY(-17.75dvh);
+    border-end-end-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: none;
+}
+
+#goEffect {
+    height: 20dvh;
+    transform: translate(12.5dvw, -97dvh);
+    display: none;
+}
+
+#gainsPoints {
+    display: none;
+    transform: translateY(-6.5dvh);
+    width: 80dvw;
+    border-radius: 20px;
+}
+
+#losesPoints {
+    display: none;
+    transform: translateY(-6.5dvh);
+    width: 80dvw;
+    border-radius: 20px;
+}
+
+#playerInfo {
+    display: flex;
+}
+
+#playerInfo #scoreContainer {
+    display: flex;
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    height: 10dvh;
+    width: 20dvw;
+    margin-left: 1dvw;
+    margin-right: 1dvw;
+}
+
+#playerInfo #scoreContainer div {
+    color: #2d92cd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5dvw;
+    font-size: 4.5dvh;
+}
+
+#playerInfo #player1Surrender {
+    margin-right: 2dvw;
+    background-color: white;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    width: 5dvw;
+}
+
+#playerInfo #player2Surrender {
+    margin-left: 2dvw;
+    background-color: white;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    width: 5dvw;
+}
+
+#playerInfo hr {
+    border-right: 5px ridge #2d92cd;
+}
+
+#containerInfo {
+    display: flex;
+    height: 10dvh;
+    width: 20dvw;
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    justify-content: center;
+}
+
+#player1ProfilePicture, #player2ProfilePicture {
+    border-radius: 50%;
+    border: 5px ridge #2d92cd;
+    height: 7dvh;
+    align-self: center;
+    justify-self: center;
+}
+
+#player1Name, #player2Name {
+    display: block;
+    width: 10dvw;
+    text-align: center;
+    color: #2d92cd;
+    font-size: 4dvh;
+    align-self: center;
+    overflow: scroll;
+}
+
+#endGame {
+    position: fixed;
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    color: #194b68;
+    border-radius: 25px;
+    height: 70dvh;
+    width: 50dvw;
+    justify-self: center;
+    z-index: 1000;
+    transform: translateY(-77.5dvh) translateX(24vw);
+    justify-content: center;
+    text-align: center;
+    background-image: url(../images/footerBackground.png);
+    transition: 0.2s;
+    display: none;
+}
+
+#endGame #lineEndGame {
+    border-top: 5px ridge #2d92cd;
+    width: 80%;
+    justify-self: center;
+}
+
+.leftWingEndGame, .rightWingEndGame {
+    position: absolute;
+}
+
+.leftWingEndGame {
+    transform: translate(-29dvw, -27.5dvh);
+}
+
+.rightWingEndGame {
+    transform: translate(15dvw, -87.5dvh);
+}
+
+#congrats {
+    height: 10dvh;
+}
+
+#winnerProfilePicture {
+    height: 25dvh;
+    justify-self: center;
+    border: 5px ridge #2d92cd;
+    border-radius: 35%;
+}
+
+#winnerName {
+    display: block;
+    font-size: 10dvh;
+    text-align: center;
+}
+
+#loserComfort {
+    display: block;
+    text-align: center;
+}
+
+#congratsGif {
+    display: block;
+    position: absolute;
+    height: 110dvh;
+    transform: translate(-25dvw, -70dvh);
+    scale: 1.25
+}
+
+#audio {
+    display: none;
+}
+
+#winnerInfo {
+    display: block;
+}
+
+footer {
+    margin: 0;
+    height: 25dvh;
+    background-color: #ffde59;
+    border: 5px ridge #2d92cd;
+    border-radius: 25px;
+    background-image: url("../images/footerBackground.png");
+}
+
+#footerLogo {
+    height: 10dvh;
+    margin: 10px;
+    display: block;
+    justify-self: center;
+    transition: 0.2s;
+}
+
+#footerLogo:hover {
+    scale: 1.1;
+}
+
+#footerLogo:active {
+    scale: 1.2;
+}
+
+footer div {
+    display: flex;
+    justify-self: center;
+}
+
+footer div a {
+    margin: 10px;
+    transition: 0.2s;
+}
+
+footer div a:hover {
+    scale: 1.1;
+}
+
+footer div a:active {
+    scale: 1.2;
+}
+
+footer div img {
+    height: 5dvh;
+}
+
+footer span {
+    display: block;
+    text-align: center;
+    color: #194b68;
+    font-family: importedFont;
+}
