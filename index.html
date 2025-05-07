@@ -40,12 +40,13 @@
             <a href="index.html">
                 <img src="images/nav/home.png" class="navText">
             </a>
-            <a href="gameFolder/game.html">
+            <a href="gameFolder/game.html" id="gameLink">
                 <img src="images/nav/game.png" class="navText">
             </a>
             <a href="#">
                 <img src="images/nav/sources.png" class="navText">
             </a>
+            <img src="images/smile.webp" id="smile">
         </nav>
 
         <img src="images/logo.png" id="logo">
@@ -168,7 +169,7 @@
                 <div id="fieldContainer">
                     <div>
                         <label for="player1Name">Enter P1's Name:</label>
-                        <input type="text" id="player1Name" name="player1" value="Player 1">
+                        <input type="text" id="player1Name" name="player1" placeholder="Player1">
                     </div>
                     <div>
                         <label for="player1Gender">Enter P1's Gender:</label>
@@ -185,7 +186,7 @@
                 <div id="fieldContainer">
                     <div>
                         <label for="player2Name">Enter P2's Name:</label>
-                        <input type="text" id="player2Name" name="player2" value="Player 2">
+                        <input type="text" id="player2Name" name="player2" placeholder="Player2">
                     </div>
                      <div>
                         <label for="player2Gender">Enter P2's Gender:</label>
@@ -204,7 +205,7 @@
 
         <br>
 
-        <button onclick="document.location.href='gameFolder/game.html'" id="redirectToGame"> <img src="images/playButton.png" id="playButtonImage"> </button>
+        <button onclick="document.location.href='gameFolder/game.html'" id="redirectToGame" disabled> <img src="images/playButton.png" id="playButtonImage"> </button>
         <br><br>
 
         <footer>

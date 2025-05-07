@@ -1,12 +1,12 @@
 var bioQuestions = ["What process do plants use to convert sunlight into chemical energy?", "What is the fluid inside chloroplasts?", "It is the evolutionary history of a group of organisms and how they descended from common ancestors.", "It maintains an internal balance between water and dissolved materials regardless of environmental conditions.", "Sensory receptors convert a stimulus into a change in membrane potential through what process?"];
 var chemQuestions = ["What is the chemical symbol of carbon?", "What do you call the center of an atom?", "What kind of bond does ammonia have?", "What is the symbol used to denote the ideal gas constant?", "The freezing point depression constant of water is __ °C/m."];
-var physQuestions = ["What is the SI unit of force?", "A car moves at 20 m/s for 5 seconds. How far does it travel?", "What does the slope of a postition-time graph represent?", "Which is harder to rotate? A laptop that is held near the hinge, or laptop that is held farther from the hinge?", "A generator generates 1,492 watts of power. How many horsepower does this correspond to?"];
+var physQuestions = ["What is the SI unit of force?", "A car moves at 20 m/s for 5 seconds. How far does it travel?", "What does the slope of a postition-time graph represent?", "What type of collision does not conserve kinetic energy?", "A generator generates 1,492 watts of power. How many horsepower does this correspond to?"];
 var mathQuestions = ["Solve for x: 4x - 5 = 11.", "If the discriminant of a quadratic equation is 0, what type of quadratic is it", "A line passes through the points (2, 3) and (6, 11). Find the slope and equation of the line in slope-intercept form.", "Solve the system: 3x + 2y = 12, 5x - y = 4.", "The graphs of y = x² - 4x + 3 and y = 2x - 1 intersect at two points. Find the coordinates of the intersection points."];
 var csQuestions = ["This is the term for a named location in memory used to store data.", "This linear data structure follows the Last In, First Out (LIFO) principle.", "This algorithm repeatedly selects the smallest remaining element and places it in order.", "This type of scheduling algorithm selects the process with the shortest expected processing time.", "This class of problems can be verified in polynomial time but not necessarily solved in polynomial time."];
 var esQuestions = ["What type of boundary is responsible for most major earthquakes?", "What was the name of the supercontinent during the Paleozoic period?", "Which is the deepest part of the world's oceans, located in the western Pacific Ocean?", "Which layer of Earth's atmosphere contains the ozone layer?", "What scale measures the earthquake's magnitude?"];
 var bioAnswers = ["What is Photosynthesis?", "What is the Stroma?", "What is Phylogeny?", "What is Osmoregulation?", "What is Transduction?"];
 var chemAnswers = ["What is C?", "What is the Nucleus?", "What is Covalent?", "What is R?", "1.86"];
-var physAnswers = ["What is a Newton?", "100m", "What is velocity?", "What is a laptop that is held farther from the hinge?", "2hp"];
+var physAnswers = ["What is a Newton?", "100m", "What is velocity?", "What is an inelastic collision?", "2hp"];
 var mathAnswers = ["x = 4", "What is a perfect square quadratic?", "y = 2x - 1", "x = 20/13, y = 48/13", "(3 + √5, 5 + 2√5), (3 - √5, 5 - 2√5)"];
 var csAnswers = ["What is a variable?", "What is a stack?", "What is selection sort?", "What is Shortest Job Next?", "What is NP?"];
 var esAnswers = ["What is a Transform boundary?", "What is the Pangea?", "What is the Mariana Trench?", "What is the Stratosphere?", "What is the Richter scale?"];
@@ -111,7 +111,7 @@ function clickQuestion(idOfQuestion) {
     document.getElementById(idOfQuestion).onclick = null;
     document.getElementById(idOfQuestion).innerHTML = "Done!";
     
-    let time = 3;
+    let time = Math.floor(Math.random() * 11);
 
     document.getElementById("container").style.width = "30dvw";
     document.getElementById("container1").style.display = "block";

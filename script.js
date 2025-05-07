@@ -30,9 +30,10 @@ function greetUsers() {
         document.getElementById("player1").innerHTML = player1Name;
         document.getElementById("player2").innerHTML = player2Name;
         document.getElementById("greetingsContainer").style.display = "block";
+        document.getElementById("redirectToGame").disabled = false;
+        document.getElementById("smile").style.display = "none";
+        document.getElementById("gameLink").style.display = "block";
     }
-
-    
 }
 
 function removeGreeting() {
@@ -96,39 +97,67 @@ function prevChangeImage() {
 }
 
 function onFormSubmit(reload) {
-    player1Name = document.getElementById("player1Name").value;
-    player2Name = document.getElementById("player2Name").value;
-    player1Gender = document.getElementById("player1Gender").value;
-    player2Gender = document.getElementById("player2Gender").value;
+    if ((document.getElementById("player1Gender").value == "select" || document.getElementById("player2Gender").value == "select") || (player2Name = document.getElementById("player1Name").value == '' || document.getElementById("player2Name").value == '')) {
+        if (document.getElementById("player1Gender").value == "select") {
+            alert("Player 1's gender is not specified.");
+            reload.preventDefault();  
+        }
 
-    for (let counter = 0; counter < player1Name.length; counter++) {
-        if (((((player1Name[counter].toLowerCase().charCodeAt(0) - 96) > 0) && (player1Name[counter].toLowerCase().charCodeAt(0) - 96) )) || (player1Name[counter].toLowerCase().charCodeAt(0) <= 57 && player1Name[counter].toLowerCase().charCodeAt(0) >= 48)) {
-            conditionPlayer1 = true;
+        if (document.getElementById("player2Gender").value == "select") {
+            alert("Player 2's gender is not specified.");
+            reload.preventDefault();  
         }
-        else {
-            conditionPlayer1 = false;
-            alert("Invalid name for Player 1.");
-            break;
-        }
-    }
     
-    for (let counter = 0; counter < player2Name.length; counter++) {
-        if (((((player2Name[counter].toLowerCase().charCodeAt(0) - 96) > 0) && (player2Name[counter].toLowerCase().charCodeAt(0) - 96) <= 26)) || (player2Name[counter].charCodeAt(0) <= 57 && player2Name[counter].charCodeAt(0) >= 48)) {
-            conditionPlayer2 = true;
+        if (document.getElementById("player1Name").value == '') {
+            alert("Player 1's name is not inputted.");
+            reload.preventDefault();  
         }
-        else {
-            conditionPlayer2 = false;
-            alert("Invalid name for Player 2.");
-            break;
+    
+        if (document.getElementById("player2Name").value == '') {
+            alert("Player 2's name is not inputted.");
+            reload.preventDefault();  
         }
     }
 
-    if (conditionPlayer1 && conditionPlayer2) {
-        localStorage.setItem("player1Name", player1Name);
-        localStorage.setItem("player2Name", player2Name);
-        localStorage.setItem("player1Gender", player1Gender);
-        localStorage.setItem("player2Gender", player2Gender);
+    else {
+        player1Name = document.getElementById("player1Name").value;
+        player2Name = document.getElementById("player2Name").value;
+        player1Gender = document.getElementById("player1Gender").value;
+        player2Gender = document.getElementById("player2Gender").value;
+
+        for (let counter = 0; counter < player1Name.length; counter++) {
+            if (((((player1Name[counter].toLowerCase().charCodeAt(0) - 96) > 0) && (player1Name[counter].toLowerCase().charCodeAt(0) - 96) )) || (player1Name[counter].toLowerCase().charCodeAt(0) <= 57 && player1Name[counter].toLowerCase().charCodeAt(0) >= 48)) {
+                conditionPlayer1 = true;
+            }
+            else {
+                conditionPlayer1 = false;
+                alert("Invalid name for Player 1.");
+                break;
+            }
+        }
+        
+        for (let counter = 0; counter < player2Name.length; counter++) {
+            if (((((player2Name[counter].toLowerCase().charCodeAt(0) - 96) > 0) && (player2Name[counter].toLowerCase().charCodeAt(0) - 96) <= 26)) || (player2Name[counter].charCodeAt(0) <= 57 && player2Name[counter].charCodeAt(0) >= 48)) {
+                conditionPlayer2 = true;
+            }
+            else {
+                conditionPlayer2 = false;
+                alert("Invalid name for Player 2.");
+                break;
+            }
+        }
+    
+        if (conditionPlayer1 && conditionPlayer2) {
+            localStorage.setItem("player1Name", player1Name);
+            localStorage.setItem("player2Name", player2Name);
+            localStorage.setItem("player1Gender", player1Gender);
+            localStorage.setItem("player2Gender", player2Gender);
+        }
+
+        alert("Accepted.");
+
+        document.getElementById("redirectToGame").disabled = false;
     }
 
-    reload.preventDefault();
+    reload.preventDefault();    
 }

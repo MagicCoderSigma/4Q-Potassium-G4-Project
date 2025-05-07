@@ -57,6 +57,10 @@ nav:hover {
     scale: 1.2;
 }
 
+#gameLink {
+    display: none;
+}
+
 #greetingsContainer {
     display: none;
 }
